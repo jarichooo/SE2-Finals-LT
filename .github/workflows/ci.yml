@@ -59,7 +59,7 @@ jobs:
           docker build -t ghcr.io/jarichooo/se2-finals-lt:latest .
           docker push ghcr.io/jarichooo/se2-finals-lt:latest
 
-  deploy:
+   deploy:
     name: Deploy to Server
     runs-on: ubuntu-latest
     needs: build-docker            # Wait for Docker image to be ready
@@ -69,7 +69,7 @@ jobs:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
         with:
-          host: ${{ secrets.SERVER_HOST }}      
+          host: ${{ secrets.SERVER_HOST }}      # Your server's IP address
           username: ${{ secrets.SERVER_USER }}   # SSH username
           key: ${{ secrets.SERVER_SSH_KEY }}     # SSH private key
           script: |
@@ -81,5 +81,4 @@ jobs:
             # Start the new one
             docker run -d --name my-app -p 80:5000 ghcr.io/${{ github.repository }}:latest
             echo "Deployed successfully!"
-
 
