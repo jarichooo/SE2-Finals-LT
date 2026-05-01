@@ -56,6 +56,6 @@ jobs:
       # Build and push the image
       - name: Build and push
         run: |
-          docker build -t ghcr.io/${{ github.repository }}:latest .
-          docker push ghcr.io/${{ github.repository }}:latest
+          docker build -t ghcr.io/jarichooo/se2-finals-lt:latest .
+          docker push ghcr.io/jarichooo/se2-finals-lt:latest
 
